@@ -1,0 +1,105 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>3 Page Website</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+        }
+        .hidden {
+            display: none;
+        }
+    </style>
+</head>
+<body>
+    <div id="login-page">
+        <h2>Login</h2>
+        <form id="login-form">
+            <label for="username">Username:</label>
+            <input type="text" id="username" name="username" required><br><br>
+            <label for="password">Password:</label>
+            <input type="password" id="password" name="password" required><br><br>
+            <button type="button" id="login-btn">Login</button>
+        </form>
+    </div>
+
+    <div id="home-page" class="hidden">
+        <h2>Home Page</h2>
+        <a href="#" id="page1-link">Go to Page 1</a><br>
+        <a href="#" id="page2-link">Go to Page 2</a><br>
+        <a href="#" id="page3-link">Go to Page 3</a><br>
+        <button id="logout-btn">Logout</button>
+    </div>
+
+    <div id="page1" class="hidden">
+        <h2>Page 1</h2>
+        <a href="#" id="back-to-home-1">Back to Home</a>
+    </div>
+
+    <div id="page2" class="hidden">
+        <h2>Page 2</h2>
+        <a href="#" id="back-to-home-2">Back to Home</a>
+    </div>
+
+    <div id="page3" class="hidden">
+        <h2>Page 3</h2>
+        <a href="#" id="back-to-home-3">Back to Home</a>
+    </div>
+
+    <script>
+        const loginPage = document.getElementById('login-page');
+        const homePage = document.getElementById('home-page');
+        const pages = {
+            page1: document.getElementById('page1'),
+            page2: document.getElementById('page2'),
+            page3: document.getElementById('page3')
+        };
+
+        const usernameInput = document.getElementById('username');
+        const passwordInput = document.getElementById('password');
+        const loginBtn = document.getElementById('login-btn');
+        const logoutBtn = document.getElementById('logout-btn');
+
+        const correctUsername = 'admin';
+        const correctPassword = '123';
+
+        loginBtn.addEventListener('click', () => {
+            if (usernameInput.value === correctUsername && passwordInput.value === correctPassword) {
+                loginPage.classList.add('hidden');
+                homePage.classList.remove('hidden');
+            } else {
+                alert('Invalid username or password');
+            }
+        });
+
+        logoutBtn.addEventListener('click', () => {
+            homePage.classList.add('hidden');
+            loginPage.classList.remove('hidden');
+        });
+
+        document.getElementById('page1-link').addEventListener('click', () => {
+            homePage.classList.add('hidden');
+            pages.page1.classList.remove('hidden');
+        });
+
+        document.getElementById('page2-link').addEventListener('click', () => {
+            homePage.classList.add('hidden');
+            pages.page2.classList.remove('hidden');
+        });
+
+        document.getElementById('page3-link').addEventListener('click', () => {
+            homePage.classList.add('hidden');
+            pages.page3.classList.remove('hidden');
+        });
+
+        Object.keys(pages).forEach(pageKey => {
+            pages[pageKey].querySelector('a').addEventListener('click', () => {
+                pages[pageKey].classList.add('hidden');
+                homePage.classList.remove('hidden');
+            });
+        });
+    </script>
+</body>
+</html>

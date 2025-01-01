@@ -1,0 +1,8 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<testsuites>
+	<testsuite name="GoogleSearchTest-20250101080659" tests="1" file=".py" time="7.246" timestamp="2025-01-01T08:07:10" failures="0" errors="0" skipped="0">
+		<testcase classname="GoogleSearchTest" name="test_google_search" time="7.246" timestamp="2025-01-01T08:07:10" file="test_google.py" line="22">
+			<!--Test Google search functionality.-->
+		</testcase>
+	</testsuite>
+</testsuites>
